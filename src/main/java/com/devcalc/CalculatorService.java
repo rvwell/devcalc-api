@@ -1,6 +1,7 @@
 package com.devcalc;
 
 public class CalculatorService {
+    //Alteração para rodar os testes
 
     public double add(double a, double b) {
         return a + b;
