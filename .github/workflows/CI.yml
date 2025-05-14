@@ -4,8 +4,12 @@ name: CI
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'src/**'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'src/**'
 
 jobs:
   build_and_test:
@@ -19,8 +23,6 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Build and Run Tests
-      run: mvn -B clean package
 
     - name: Run Unit Tests
       run: mvn -B test
