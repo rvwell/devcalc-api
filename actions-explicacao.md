@@ -1,0 +1,3 @@
+# Entendendo GitHub Actions: Workflows vs. Actions
+
+No GitHub Actions, um workflow é um processo automatizado definido em YAML, acionado por eventos e composto por jobs e steps. As actions são blocos reutilizáveis, como actions/checkout, que executam tarefas específicas nos steps. Cada action possui um action.yml com inputs, outputs e instruções de execução, sendo chamada com uses: e configurada via with.
