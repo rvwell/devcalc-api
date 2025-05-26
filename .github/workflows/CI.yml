@@ -50,7 +50,6 @@ jobs:
   deploy:
     name: Simulando Deploy
     needs: [ package, call_lint_and_test ]
-    if: github.event_name != 'workflow_dispatch' || (inputs.run_lint && inputs.run_tests)
     runs-on: ubuntu-latest
     steps:
       - name: Print Deploy Message
