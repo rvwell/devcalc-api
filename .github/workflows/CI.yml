@@ -31,13 +31,17 @@ jobs:
 
   call_lint_and_test:
     name: Lint and Test
+    if: github.event_name != 'workflow_dispatch' || (inputs.run_lint || inputs.run_tests)
     uses: ./.github/workflows/lint-and-test.yml
     with:
       java-version: '21'  
+      execute_lint: ${{ github.event_name != 'workflow_dispatch' || inputs.run_lint }}
+      execute_tests: ${{ github.event_name != 'workflow_dispatch' || inputs.run_tests }}
       
-  ddeploy:
+  deploy:
     name: Simulando Deploy
     needs: [ package, call_lint_and_test ]
+    if: github.event_name != 'workflow_dispatch' || (inputs.run_lint && inputs.run_tests)
     runs-on: ubuntu-latest
     steps:
       - name: Print Deploy Message
