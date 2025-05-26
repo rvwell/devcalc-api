@@ -11,6 +11,12 @@ on:
         required: false
         type: string
         default: 'temurin'
+      execute_lint:
+        required: true
+        type: boolean
+      execute_tests:
+        required: true
+        type: boolean
 
 jobs:
  validate:
@@ -28,6 +34,8 @@ jobs:
         cache: maven
 
      - name: Run Checkstyle (Lint)
+       if: inputs.execute_lint == true
        run: mvn checkstyle:check -B
      - name: Run Unit Teste
+       if: inputs.execute_tests == true
        run: mvn -B test
