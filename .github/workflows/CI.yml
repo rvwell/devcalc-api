@@ -12,6 +12,15 @@ on:
       - 'src/**'
 
   workflow_dispatch:
+    inputs:
+      run_lint:
+        type: boolean
+        default: true
+        required: false
+      run_tests:
+        type: boolean
+        default: true
+        required: false
 
 jobs:
   package:
