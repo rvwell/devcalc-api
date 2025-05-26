@@ -38,4 +38,4 @@ jobs:
        run: mvn checkstyle:check -B
      - name: Run Unit Teste
        if: inputs.execute_tests == true
-       run: mvn -B test_com_erro
+       run: mvn -B test
