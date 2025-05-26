@@ -1,0 +1,33 @@
+name: Reusable Code Validation
+
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: false
+        type: string
+        default: '21'
+      java-distribution:
+        required: false
+        type: string
+        default: 'temurin'
+
+jobs:
+ validate:
+   name: Lint and Test Code
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout Code
+       uses: actions/checkout@v4
+
+     - name: Set up JDK ${{ inputs.java-version }}
+       uses: actions/setup-java@v4
+       with:
+        java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.java-distribution }}
+        cache: maven
+
+     - name: Run Checkstyle (Lint)
+       run: mvn checkstyle:check -B
+     - name: Run Unit Teste
+       run: mvn -B test
