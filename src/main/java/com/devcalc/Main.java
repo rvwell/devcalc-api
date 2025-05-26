@@ -2,43 +2,63 @@ package com.devcalc;
 
 import io.javalin.Javalin;
 
-public class Main {
+/**
+ * Classe principal que configura e inicia a aplicação.
+ */
+public final class Main {
 
-    private static final CalculatorService calculator = new CalculatorService();
+    /**
+     * Instância do serviço de calculadora.
+     */
+    private static final CalculatorService CALCULATOR = new CalculatorService();
 
-    public static void main(String[] args) {
+    /**
+     * Porta padrão na qual o servidor Javalin.
+     */
+    private static final int DEFAULT_PORT = 7070;
+
+    /**
+     * Construtor privado para impedir a instanciação de classe utilitária.
+     */
+    private Main() {
+        throw new UnsupportedOperationException("Esta é uma classe utilitária");
+    }
+
+    /**
+     * Ponto de entrada principal da aplicação.
+     * @param args argumentos de linha de comando
+     */
+    public static void main(final String[] args) {
 
         Javalin app = Javalin.create()
-                .start(7070);
+                .start(DEFAULT_PORT);
 
         app.get("/add", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            double result = calculator.add(a, b);
+            final double a = Double.parseDouble(ctx.queryParam("a"));
+            final double b = Double.parseDouble(ctx.queryParam("b"));
+            final double result = CALCULATOR.add(a, b);
             ctx.result(String.valueOf(result));
         });
 
         app.get("/subtract", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            double result = calculator.subtract(a, b);
+            final double a = Double.parseDouble(ctx.queryParam("a"));
+            final double b = Double.parseDouble(ctx.queryParam("b"));
+            final double result = CALCULATOR.subtract(a, b);
             ctx.result(String.valueOf(result));
         });
 
         app.get("/multiply", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            double result = calculator.multiply(a, b);
+            final double a = Double.parseDouble(ctx.queryParam("a"));
+            final double b = Double.parseDouble(ctx.queryParam("b"));
+            final double result = CALCULATOR.multiply(a, b);
             ctx.result(String.valueOf(result));
         });
 
         app.get("/divide", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            double result = calculator.divide(a, b);
+            final double a = Double.parseDouble(ctx.queryParam("a"));
+            final double b = Double.parseDouble(ctx.queryParam("b"));
+            final double result = CALCULATOR.divide(a, b);
             ctx.result(String.valueOf(result));
         });
-
-
     }
 }

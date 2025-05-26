@@ -14,7 +14,7 @@ public final class CalculatorService {
      * @param b o segundo número a ser adicionado.
      * @return a soma de {@code a} e {@code b}.
      */
-    public double add(double a, double b) {
+    public double add(final double a, final double b) {
         return a + b;
     }
 
@@ -25,7 +25,7 @@ public final class CalculatorService {
      * @param b o número a ser subtraído (subtraendo).
      * @return a diferença entre {@code a} e {@code b}.
      */
-    public double subtract(double a, double b) {
+    public double subtract(final double a, final double b) {
         return a - b;
     }
 
@@ -36,7 +36,7 @@ public final class CalculatorService {
      * @param b o segundo fator.
      * @return o produto de {@code a} e {@code b}.
      */
-    public double multiply(double a, double b) {
+    public double multiply(final double a, final double b) {
         return a * b;
     }
 
@@ -48,7 +48,7 @@ public final class CalculatorService {
      * @return o quociente de {@code a} por {@code b}.
      * @throws ArithmeticException se {@code b} for zero.
      */
-    public double divide(double a, double b) {
+    public double divide(final double a, final double b) {
         if (b == 0) {
             throw new ArithmeticException("Divisão por zero");
         }
