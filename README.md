@@ -1,4 +1,4 @@
-[![CI](https://github.com/rvwell/devcalc-api/actions/workflows/CI.yml/badge.svg?branch=main&event=push)](https://github.com/rvwell/devcalc-api/actions/workflows/CI.yml)
+[![CI](https://github.com/rvwell/devcalc-api/actions/workflows/CI.yml/badge.svg?event=workflow_dispatch)](https://github.com/rvwell/devcalc-api/actions/workflows/CI.yml)
 
 # DevCalc API
 
