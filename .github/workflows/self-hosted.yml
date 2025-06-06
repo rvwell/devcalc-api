@@ -19,7 +19,7 @@ jobs:
 
       - name: Instalar software
         run: |
-          scoop install main/maven
+          choco install maven
 
       - name: Usar o software instalado
         run: |
