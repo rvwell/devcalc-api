@@ -1,0 +1,33 @@
+name: self-hosted.yml
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-on-self-hosted:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Verificar informações do sistema local
+        run: |
+          echo "Este job está rodando em:"
+          uname -a
+          echo "------------------------"
+
+      - name: Verificar versão do Java instalada
+        run: |
+          echo "A versão do Java é:"
+          java -version
+          echo "------------------------"
+
+      - name: Instalar software
+        run: |
+          scoop install main/maven
+
+      - name: Usar o software instalado
+        run: |
+          echo "Executando maven"
+          mvn -v
