@@ -17,10 +17,10 @@ jobs:
         run: |
           echo "Usuário: ${{ github.actor }}"
           echo "Runner OS: ${{ runner.os }}"
-          echo "STAGE herdada: $STAGE"
+          echo "STAGE herdada: ${{ env.STAGE }}"
+
       - name: Exibir Variável Sobrescrita pelo Step
         env:
           STAGE: "test"
         run: |
-          echo "STAGE local....: $STAGE (veio do nível do step)"
-          echo "Contexto 'env'.: ${{ env.STAGE }}"
+          echo "STAGE local....: ${{ env.STAGE }}"
