@@ -1,0 +1,26 @@
+name: env-context-demo.yml
+on:
+  workflow_dispatch:
+
+env:
+  STAGE: "prod"
+
+jobs:
+  demonstrando_scopo:
+    runs-on: self-hosted
+
+    env:
+      STAGE: "staging"
+
+    steps:
+      - name: Exibir Informações Gerais e Variável do Job
+        run: |
+          echo "Usuário: ${{ github.actor }}"
+          echo "Runner OS: ${{ runner.os }}"
+          echo "STAGE herdada: $STAGE"
+      - name: Exibir Variável Sobrescrita pelo Step
+        env:
+          STAGE: "test"
+        run: |
+          echo "STAGE local....: $STAGE (veio do nível do step)"
+          echo "Contexto 'env'.: ${{ env.STAGE }}"
