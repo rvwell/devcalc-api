@@ -21,7 +21,7 @@ jobs:
 
       - name: Instalar software
         run: |
-          choco install maven
+          choco install maven -y
 
       - name: Usar o software instalado
         run: |
