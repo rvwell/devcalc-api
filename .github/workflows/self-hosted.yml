@@ -25,5 +25,6 @@ jobs:
 
       - name: Usar o software instalado
         run: |
+          refreshenv
           echo "Executando maven"
           mvn -v
