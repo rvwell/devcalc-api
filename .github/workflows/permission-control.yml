@@ -22,6 +22,6 @@ jobs:
         run: |
           gh issue create \
             --title "Falha no Deploy: ${{ github.workflow }}" \
-            --body "Erro n job ${{ github.job }}
+            --body "Erro n job ${{ github.job }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
