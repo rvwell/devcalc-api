@@ -1,0 +1,27 @@
+name: permission-control.yml
+on:
+  workflow_dispatch:
+
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  simular_falha_e_cria_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout de código
+        uses: actions/checkout@v4
+
+      - name: Simular Falha
+        run: exit 1
+      
+      - name: Criar Issue
+        if: failure()
+        run: |
+          gh issue create \
+            --title "Falha no Deploy: ${{ github.workflow }}" \
+            --body "Erro n job ${{ github.job }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
