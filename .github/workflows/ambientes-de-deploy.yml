@@ -1,0 +1,33 @@
+name: ambientes-de-deploy.yml
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy na Dev
+        run: |
+          echo "Lendo variavel"
+          echo "variavel é: ${{ vars.TESTE_DEV }}"
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy na Prod
+        run: |
+          echo "Lendo secret"
+          echo "secret é: ${{ secrets.SECRER_PROD }}"
