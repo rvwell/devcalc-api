@@ -60,5 +60,11 @@ public final class Main {
             final double result = CALCULATOR.divide(a, b);
             ctx.result(String.valueOf(result));
         });
+
+        app.get("/square", ctx -> {
+            final double a = Double.parseDouble(ctx.queryParam("a"));
+            final double result = CALCULATOR.sqrt(a);
+            ctx.result(String.valueOf(result));
+        });
     }
 }

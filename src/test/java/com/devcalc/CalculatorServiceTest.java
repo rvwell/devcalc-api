@@ -33,4 +33,10 @@ public class CalculatorServiceTest {
     public void testDivideByZero() {
         assertThrows(ArithmeticException.class, () -> {calculator.divide(10, 0);});
     }
+
+    @Test
+    public void testSquareRoot() { assertEquals(4.0, calculator.sqrt(16));}
+
+    @Test
+    public void testSqrtRootNegativeNumbers() { assertThrows(IllegalArgumentException.class, () -> {calculator.sqrt(-16);});}
 }

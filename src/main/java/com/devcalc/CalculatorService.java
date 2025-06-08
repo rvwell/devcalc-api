@@ -54,4 +54,17 @@ public final class CalculatorService {
         }
         return a / b;
     }
+
+    /**
+     * Calcula a raiz quadrada de um número.
+     * @param x Número para o qual a raiz será calculada.
+     * @return A raiz de x.
+     * @throws IllegalArgumentException se x for negativo.
+     */
+    public double sqrt(double x) {
+        if (x < 0) {
+            throw new IllegalArgumentException("Número negativo.");
+        }
+        return Math.sqrt(x);
+    }
 }
