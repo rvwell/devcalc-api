@@ -61,7 +61,7 @@ public final class CalculatorService {
      * @return A raiz de x.
      * @throws IllegalArgumentException se x for negativo.
      */
-    public double sqrt(double x) {
+    public double sqrt(final double x) {
         if (x < 0) {
             throw new IllegalArgumentException("Número negativo.");
         }
